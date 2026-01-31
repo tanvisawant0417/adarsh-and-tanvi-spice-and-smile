@@ -1,0 +1,974 @@
+/* --- 1. Base Styles (Global) --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f8f8f8;
+    padding: 10px;
+}
+
+/* --- 2. Laptop/Desktop Styles (Default) --- */
+.main-header {
+    background-color: #000;
+    color: white;
+    padding: 15px 5%;
+    border-radius: 50px; /* Pill shape for desktop */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo img {
+    height: 50px;
+    display: block;
+}
+
+.nav-menu ul {
+    display: flex; /* Keeps menu in one line on laptop */
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.nav-item.active {
+    background-color: #f48225; /* Orange box */
+}
+
+.login-btn {
+    text-decoration: none;
+    color: white;
+    border: 1px solid #f48225;
+    padding: 8px 25px;
+    border-radius: 5px;
+}
+
+/* --- 3. Mobile Styles (Screens smaller than 768px) --- */
+@media screen and (max-width: 768px) {
+    .main-header {
+        border-radius: 20px; /* Less rounded for small screens */
+        padding: 15px;
+    }
+
+    .header-container {
+        flex-direction: column; /* Stacks everything vertically */
+        gap: 15px;
+    }
+
+    .nav-menu ul {
+        flex-wrap: wrap; /* Allows menu to wrap if too long for a phone */
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .nav-menu a {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+
+    .login-btn {
+        width: 100%;
+        text-align: center;
+        display: block;
+    }
+}
+
+/* Container must be 'relative' so the text can be 'absolute' */
+.banner-container {
+    position: relative;
+    width: 95%;
+    margin: 20px auto;
+    border-radius: 15px;
+    overflow: hidden; /* Keeps the image inside the rounded corners */
+}
+
+/* The Image itself */
+.banner-img {
+    width: 100%;
+    height: 500px;      /* Fixed height for laptop */
+    object-fit: cover;  /* Prevents stretching - VERY IMPORTANT */
+    display: block;
+}
+
+/* The dark tint and layout for the text */
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Darkens image so text is readable */
+    display: flex;
+    align-items: center;
+    padding-left: 50px;
+}
+
+.banner-text h1 {
+    color: white;
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.banner-btns {
+    display: flex;
+    gap: 15px;
+}
+
+.banner-btns a {
+    text-decoration: none;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.btn-red { background-color: #e74c3c; }
+.btn-orange { background-color: #f39c12; }
+
+/* --- ALL SCREEN RESPONSIVENESS (MOBILE) --- */
+@media (max-width: 768px) {
+    .banner-img {
+        height: 300px; /* Shorter image on phones */
+    }
+
+    .banner-overlay {
+        padding-left: 0;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .banner-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .banner-btns {
+        flex-direction: column; /* Stacks buttons on phones */
+        align-items: center;
+    }
+}
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Darkens the background */
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.popup-card {
+    background: #D98E3A; /* Matches the orange in your image */
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.5);
+}
+
+.popup-card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+.popup-card h1 { font-size: 2rem; margin-bottom: 25px; line-height: 1.2; }
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.input-group input {
+    flex: 2;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+}
+
+.unlock-btn {
+    flex: 1;
+    background: black;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* FORCE OVERLAY TO THE FRONT */
+.coupon-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(0, 0, 0, 0.85) !important; /* Darker background */
+    display: none; /* JavaScript will change this to flex */
+    justify-content: center !important;
+    align-items: center !important;
+    z-index: 9999999 !important; /* Extremely high layer */
+}
+
+.coupon-card {
+    background: #D98E3A !important; 
+    width: 90%;
+    max-width: 500px;
+    padding: 40px;
+    border-radius: 20px;
+    position: relative;
+    text-align: center;
+    color: white !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+    z-index: 10000000 !important;
+}
+/* 3. Text Styling */
+.coupon-content h3 {
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.coupon-content h1 {
+    font-size: 2.2rem;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 30px;
+}
+
+/* 4. Input and Button Group */
+.coupon-input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.coupon-input-group input {
+    flex: 2;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Main Action Button Styling */
+.unlock-btn {
+    width: 100%;
+    background: #1a1a1a !important; /* Solid black base */
+    color: white !important;
+    border: 2px solid #1a1a1a; /* Border to prevent shifting on hover */
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease; /* Smooth transition for color and scale */
+}
+
+/* THE ORANGE HOVER EFFECT */
+.unlock-btn:hover {
+    background: #f48225 !important; /* Changes to your Brand Orange */
+    border-color: #ffffff;           /* Subtle white border pop */
+    color: #ffffff !important;
+    transform: translateY(-3px);     /* Lift effect */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* 5. The Close Button (X) */
+.close-popup {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+/* --- BLAST EFFECT CANVAS STYLING --- */
+canvas {
+    pointer-events: none !important;
+    z-index: 10000001 !important; /* One level higher than overlay */
+    position: fixed !important;
+}
+
+/* Container alignment to match your header/banner */
+.popular-section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    font-family: Arial, sans-serif;
+}
+
+.section-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* THE GRID: Creates 4 equal columns */
+.items-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 equal boxes */
+    gap: 20px; /* Space between boxes */
+}
+
+/* Individual Card Styling */
+.food-card {
+    background-color: transparent;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.food-card img {
+    width: 100%;
+    height: 180px;      /* Consistent height for all images */
+    object-fit: cover;  /* Prevents stretching */
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.food-card h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+/* Red Add to Cart Button - CHANGED TO ORANGE */
+.add-to-cart {
+    background-color: #f48225; /* Your Brand Orange */
+    color: white;
+    border: none;
+    width: 140px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: block;
+    margin: 10px auto;
+    transition: 0.3s; /* Makes the transition smooth */
+}
+
+/* Updated hover to stay Orange */
+.add-to-cart:hover {
+    background-color: #f48225 !important; /* Forces it to stay orange */
+    transform: scale(1.05); /* Keeps the slight growth effect */
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 992px) {
+    .items-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 items per row on tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .items-grid {
+        grid-template-columns: 1fr; /* 1 item per row on small phones */
+    }
+}
+
+/* Container to keep sizes equal to Header/Banner */
+.about-section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto; /* Centers it and adds equal top/bottom spacing */
+    background: #fff;  /* White background like your image */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Soft shadow */
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Space between image and text */
+}
+
+/* 1. The Circular Image */
+.about-image img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%; /* Makes it a perfect circle */
+    object-fit: cover;
+    border: 5px solid #f8f8f8;
+}
+
+/* 2. The Text content */
+.about-content {
+    flex: 1; /* Takes up the remaining space */
+}
+
+.about-content h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.about-content p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+/* 3. The Blue Read More Button */
+.read-more-btn {
+    display: inline-block;
+    background-color: #2980b9; /* Blue color from image */
+    color: white;
+    text-decoration: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.read-more-btn:hover {
+    background-color: #21618c;
+}
+
+/* --- RESPONSIVE FIX --- */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column; /* Stacks image on top of text on phones */
+        text-align: center;
+    }
+    
+    .about-section {
+        width: 95%;
+        padding: 20px;
+    }
+}
+
+/* Footer Main Styling */
+.main-footer {
+    background-color: #000000; /* Solid black background */
+    color: #ffffff;
+    width: 95%; /* Matches the width of your header and banner */
+    max-width: 1400px;
+    margin: 50px auto 20px auto; /* Centers the footer on the page */
+    padding: 40px 60px;
+    border-radius: 80px; /* Large rounded corners like the header */
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between; /* Spreads columns to corners */
+    align-items: flex-start;
+    flex-wrap: wrap; /* Allows wrapping on tablets */
+    gap: 30px;
+}
+
+/* Individual Column Styling */
+.footer-column {
+    flex: 1;
+    min-width: 150px;
+}
+
+.footer-column h3 {
+    color: #f48225; /* Orange accent for headings */
+    font-size: 1rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.footer-column p, 
+.footer-column ul li {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: #cccccc; /* Slightly dimmed white for better readability */
+}
+
+/* Links inside footer */
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li a {
+    color: #cccccc;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: #f48225; /* Turns orange on hover */
+}
+
+/* --- UPDATED SOCIAL MEDIA ICONS --- */
+.social-icons {
+    display: flex;
+    flex-direction: row; 
+    gap: 15px;
+    margin-top: 10px; /* Space between heading and icons */
+}
+
+.social-icons img {
+    height: 35px; /* Adjusting to match your social-img class */
+    width: 35px;
+    filter: none !important; /* THIS REMOVES THE PURPLE EFFECT */
+    object-fit: contain;
+}
+
+/* Specific styling for the icons with hover effects */
+.social-img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    display: block;
+    filter: none !important; /* Ensures original colors stay */
+    transition: transform 0.3s ease;
+}
+
+.social-img:hover {
+    transform: scale(1.2);
+}
+
+.copyright {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* Update this to lock everything to the top */
+.footer-grid { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; /* Keeps headings perfectly aligned */
+}
+
+/* Force the column to stack vertically */
+.footer-col {
+    display: flex;
+    flex-direction: column; /* Vertical stack: Heading then Icons */
+}
+
+/* Ensure no extra top margin pushes the heading down */
+.footer-col h3 { 
+    color: #f39c12; 
+    margin-bottom: 10px; 
+    margin-top: 0; /* */
+}
+
+/* This div only holds the images side-by-side */
+/* This forces the images to be small and visible */
+.social-img {
+    width: 35px;  /* Adjust this size as needed */
+    height: 35px;
+    object-fit: contain; /* Prevents the image from stretching */
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.social-img:hover {
+    transform: scale(1.2);
+}
+
+/* This keeps the WhatsApp and Instagram side-by-side */
+.social-icons {
+    display: flex;
+    flex-direction: row; 
+    gap: 15px;
+    margin-top: 10px; /* Space between heading and icons */
+}
+
+/* 1. Add this new container to handle the centering */
+.footer-bottom {
+    width: 100%;
+    text-align: center; /* This moves the text to the middle */
+    margin-top: 30px;   /* Adds space between the columns and the copyright */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Optional: adds a subtle line above */
+    padding-top: 15px;
+}
+
+/* --- TOP NAVIGATION HOVER ONLY --- */
+
+/* This targets ONLY the links in the header and the login button */
+.nav-menu a:hover, 
+.login-btn:hover {
+    background-color: #f48225 !important; /* Brand Orange */
+    color: white !important;               /* White text */
+    border-color: #f48225 !important;      /* Orange border for login */
+    transform: translateY(-2px);           /* Subtle lift */
+    transition: 0.3s ease;
+}
+
+/* Optional: Subtle underline for the active page */
+.nav-item.active {
+    border-bottom: 2px solid white;
+}
+
+/* 2. HERO: SEE MENU */
+.btn-red:hover {
+    background-color: #a93226 !important; /* Becomes Darker Red */
+    transform: scale(1.05);
+}
+
+/* GRID: ADD TO CART (This is the fix) */
+.add-to-cart:hover {
+    background-color: #f48225 !important; /* STAYS BRAND ORANGE */
+    transform: scale(1.05);             /* Still pops out slightly */
+}
+
+/* 3. HERO: ORDER NOW (Specific Dark Orange) */
+.btn-orange:hover {
+    background-color: #e67e22 !important; /* Your requested color */
+    transform: scale(1.05);
+}
+
+/* 4. ABOUT: READ MORE (Blue) */
+.read-more-btn:hover {
+    background-color: #21618c !important; /* Darker Blue */
+    transform: scale(1.05);
+}
+
+/* 5. CLICK EFFECT (For every button on the site) */
+a:active, button:active {
+    transform: scale(0.95) !important;
+}
+
+.btn-email-redirect {
+    background: #f39c12;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-email-redirect:hover {
+    background: white;
+    color: #f39c12;
+}
+
+.white-email {
+    color: #ffffff !important; /* Forces the color to be pure white */
+    text-decoration: none;      /* Removes the underline */
+    font-weight: 500;
+    transition: 0.3s;           /* Makes the hover effect smooth */
+}
+
+/* This adds a nice effect when you put your mouse over it */
+.white-email:hover {
+    color: #f39c12 !important;  /* Changes to orange on hover */
+    text-decoration: underline; /* Shows underline only when hovering */
+}
+
+/* Container for the Pill-style toggle box */
+/* Change this name from .quantity-controls to .quantity-pill */
+.quantity-pill {
+    display: flex !important; /* Forces it to show */
+    align-items: center;
+    justify-content: space-between;
+    width: 140px;
+    height: 40px;
+    padding: 0 10px;
+    border: 2px solid #f48225;
+    border-radius: 10px;
+    background-color: #fff;
+    margin: 10px auto;
+}
+
+/* The buttons inside the box */
+.qty-btn {
+    background: transparent;
+    border: none;
+    color: #f48225;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.qty-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Style for the number in the middle */
+.qty-number {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+/* MOBILE RESPONSIVENESS */
+@media screen and (max-width: 500px) {
+    .coupon-card {
+        padding: 25px 20px; /* Reduced padding for more space */
+    }
+
+    .coupon-content h1 {
+        font-size: 1.6rem; /* Smaller text for mobile screens */
+        margin-bottom: 20px;
+    }
+
+    .coupon-input-group {
+        flex-direction: column; /* Stacks input and button vertically */
+        gap: 12px;
+    }
+
+    .coupon-input-group input {
+        width: 100%;
+        padding: 12px;
+        box-sizing: border-box; /* Ensures padding doesn't break width */
+    }
+
+    .unlock-btn {
+        width: 100%;
+        padding: 12px;
+        height: auto;
+    }
+    
+    .close-popup {
+        top: 10px;
+        right: 15px;
+        font-size: 28px;
+    }
+}
+
+.desc {
+  font-size: 14px;
+  color: #555;
+  margin: 6px 0 10px;
+  line-height: 1.4;
+}
+
+
+/* Veg Icon Styling */
+.veg-icon {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #0f8b3d; /* The green border */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px auto; /* Centers it and adds space below */
+    background: white;
+}
+
+.veg-icon::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: #0f8b3d; /* The green dot */
+    border-radius: 50%;
+    display: block;
+}
+
+/* HERO SECTION */
+.hero-section {
+  text-align: center;
+  padding: 80px 20px;
+  background: url('your-hero-bg.jpg') center/cover no-repeat;
+  color: #fff;
+}
+
+.hero-section h1 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.hero-section p {
+  font-size: 1.25rem;
+  margin-bottom: 30px;
+  color: #fafafa;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 28px;
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+/* Primary Button */
+.btn-primary {
+  background-color: #ff5722;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #e64a19;
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.btn-secondary:hover {
+  background-color: #f2f2f2;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2.2rem;
+  }
+  .hero-section p {
+    font-size: 1.1rem;
+  }
+}
+
+
+
+
+
+/* ============ REVIEWS SECTION ============ */
+.reviews-section {
+    padding: 70px 20px;
+    background: linear-gradient(135deg, #fff3e0, #ffffff);
+    overflow: hidden;
+    text-align: center;
+}
+
+.reviews-section h2 {
+    font-size: clamp(24px, 4vw, 36px);
+    margin-bottom: 40px;
+}
+
+.reviews-track {
+    display: flex;
+    gap: 25px;
+    animation: scrollReviews 25s linear infinite;
+}
+
+.review-card {
+    min-width: 260px;
+    background: rgba(255,255,255,0.85);
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.review-card p {
+    font-size: 15px;
+    margin: 15px 0;
+}
+
+.review-card h4 {
+    color: #ff7a00;
+    font-weight: 600;
+}
+
+.stars {
+    color: gold;
+    font-size: 18px;
+}
+
+/* Auto scroll animation */
+@keyframes scrollReviews {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* Pause when hovered */
+.reviews-track:hover {
+    animation-play-state: paused;
+}
+
+/* ============ FEEDBACK SECTION ============ */
+.feedback-section {
+    padding: 70px 20px;
+    background: #111;
+    color: white;
+    text-align: center;
+}
+
+.feedback-form {
+    max-width: 500px;
+    margin: auto;
+}
+
+.feedback-form input,
+.feedback-form textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: none;
+}
+
+.star-rating {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.star-rating span {
+    cursor: pointer;
+    color: gray;
+    transition: 0.2s;
+}
+
+.star-rating span.active {
+    color: gold;
+}
+
+.feedback-form button {
+    background: linear-gradient(135deg, orange, orangered);
+    border: none;
+    padding: 14px 28px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.thank-you {
+    display: none;
+    margin-top: 20px;
+    color: gold;
+}

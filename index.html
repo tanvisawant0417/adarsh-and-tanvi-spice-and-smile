@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spice & Smile | Authentic Indian Street Food</title>
+    <link rel="stylesheet" href="HOMEPAGE.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="home.js" defer></script>
+</head>
+<body>
+
+    <div id="coupon-overlay" class="coupon-overlay">
+        <div class="coupon-card">
+            <button class="close-popup" onclick="closePopup()">&times;</button>
+            <div class="coupon-content">
+                <h3>WELCOME TO SPICE & SMILE!</h3>
+                <h1>Enjoy 20% off <br> your first order.</h1>
+                <div class="coupon-input-group">
+                    <input type="email" placeholder="Enter Email Address" id="subscriber-email">
+                    <button type="button" class="unlock-btn" onclick="applyDiscount()">UNLOCK CODE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="logo.png" alt="Spice & Smile Logo">
+            </div>
+			
+			
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">🏠 Home</a></li>
+                    <li><a href="menu.html">📜 Menu</a></li>
+                    <li><a href="aboutus.html">ℹ️ About Us</a></li>
+                    <li>
+                        <a href="cart.html">🛒 Cart <span id="cart-count">0</span></a>
+                    </li> 
+                </ul>
+           </nav>
+            <div class="auth-buttons">
+                <a href="signup.html" class="login-btn">Sign In</a>
+            </div>
+        </div>
+		  
+    </header>
+
+    <div class="banner-container">
+        <img src="banner.png" alt="Fresh Dabeli" class="banner-img">
+        <div class="banner-overlay">
+            <div class="banner-text">
+                 <h1>
+                Spice &amp; Smile —<br>
+                Indian Street Food You’ll Love
+            </h1>
+           
+                <div class="banner-btns">
+                    <a href="menu.html" class="btn-red">Explore Menu</a>
+                <a href="signup.html" class="btn-orange">Order Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="popular-section">
+        <h2 class="section-title">POPULAR ITEMS</h2>
+        <div class="items-grid">
+            
+            <div class="food-card">
+                <img src="classic dabelli.png" alt="Classic Dabeli">
+                <span class="veg-icon"></span> <h3>Classic Dabeli</h3>
+				<p class="desc">Grilled pav stuffed with classic Dabeli masala, tangy chutneys & crunchy peanuts.</p>
+
+                <p>₹50</p>
+                <div class="ctrl-container" id="ctrl-Dabeli">
+                    </div>
+            </div>
+
+            <div class="food-card">
+                <img src="cheese dabelli.png" alt="Cheese Dabeli">
+               <span class="veg-icon"></span>  <h3>Cheese Dabeli</h3>
+				<p class="desc">Grilled pav loaded with melted cheese, spiced potato filling & flavorful chutneys.</p>
+
+                <p>₹70</p>
+                <div class="ctrl-container" id="ctrl-Cheese"></div>
+            </div>
+
+            <div class="food-card">
+                <img src="mango juice.png" alt="Mango Juice">
+                <span class="veg-icon"></span> <h3>Mango Juice</h3>
+				<p class="desc">Sweet and refreshing mango juice made from ripe, juicy mangoes.</p>
+                <p>₹60</p>
+                <div class="ctrl-container" id="ctrl-Mango"></div>
+            </div>
+
+            <div class="food-card">
+                <img src="pineapple juice (2).png" alt="Pineapple Juice">
+                <span class="veg-icon"></span> <h3>Pineapple Juice</h3>
+				<p class="desc">Freshly extracted pineapple juice served chilled and refreshing.</p>
+                <p>₹60</p>
+                <div class="ctrl-container" id="ctrl-Pineapple"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="about image.png" alt="Our Restaurant Owners">
+            </div>
+            <div class="about-content">
+                <h2>ABOUT</h2>
+                <p>Adarsh & Tanvi's Spice & Smile is a family-owned venture bringing the authentic, zesty flavors of Indian street food to your neighborhood.</p>
+                <a href="aboutus.html" class="read-more-btn">Read More</a>
+            </div>
+        </div>
+    </section>
+	
+<!-- ================= AUTO REVIEWS ================= -->
+<section class="reviews-section">
+    <h2>Loved by Our Customers ❤️</h2>
+
+    <div class="reviews-track">
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>Best dabeli I’ve had! Perfect spice and freshness.</p>
+            <h4>Riya Patil</h4>
+        </div>
+
+        <div class="review-card">
+            <div class="stars">★★★★☆</div>
+            <p>Juices are refreshing and hygiene is top-notch.</p>
+            <h4>Aman Kulkarni</h4>
+        </div>
+
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>Affordable prices with amazing taste. Loved it!</p>
+            <h4>Sneha Deshmukh</h4>
+        </div>
+
+        <!-- DUPLICATE FOR SMOOTH LOOP -->
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>Best dabeli I’ve had! Perfect spice and freshness.</p>
+            <h4>Riya Patil</h4>
+        </div>
+
+        <div class="review-card">
+            <div class="stars">★★★★☆</div>
+            <p>Juices are refreshing and hygiene is top-notch.</p>
+            <h4>Aman Kulkarni</h4>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================= FEEDBACK ================= -->
+<section class="feedback-section">
+    <h2>Rate Your Experience ⭐</h2>
+
+    <form class="feedback-form" onsubmit="submitFeedback(event)">
+        <input type="text" placeholder="Your Name" required>
+
+        <div class="star-rating">
+            <span onclick="rate(1)">★</span>
+            <span onclick="rate(2)">★</span>
+            <span onclick="rate(3)">★</span>
+            <span onclick="rate(4)">★</span>
+            <span onclick="rate(5)">★</span>
+        </div>
+
+        <textarea placeholder="Write your feedback..." required></textarea>
+        <button type="submit">Submit Review</button>
+    </form>
+
+    <div class="thank-you" id="thankYou">
+        🎉 Thanks for rating us!
+    </div>
+</section>
+
+
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p>123 Spice Lane, Flavor Town</p>
+                <p>Phone: +91 8104058728</p>
+                <p><a href="mailto:SpiceandSmile@gmail.com" class="white-email">SpiceandSmile@gmail.com</a></p>
+            </div>
+            <div class="footer-column">
+                <h3>Available In</h3>
+                <ul>
+                    <li><a href="#">Dadar</a></li>
+                    <li><a href="#">Andheri</a></li>
+                    <li><a href="#">Bandra</a></li>
+                    <li><a href="#">Ghatkopar</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Social Links</h3>
+                <div class="social-icons">
+                    <a href="https://wa.me/918104058728" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="social-img" alt="WhatsApp">
+                    </a>
+                    <a href="https://www.instagram.com/_.tanvi_.0427" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" class="social-img" alt="Instagram">
+                    </a>
+                </div>
+                <p class="copyright">© 2026 Spice & Smile Limited</p>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+</html>
