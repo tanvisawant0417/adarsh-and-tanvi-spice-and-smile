@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join the Family - Spice & Smile</title>
+    <link rel="stylesheet" href="sign up.css">
+</head>
+<body>
+
+    <img src="butter chesse dabelli.png" class="bg-image" alt="Dabeli Background">
+
+    <div class="signup-wrapper">
+        <div class="glass-box" id="signup-box">
+            <div class="logo-container">
+                <img src="cropped_circle_image.png" alt="Spice & Smile Logo">
+            </div>
+
+            <h2>JOIN THE FAMILY</h2>
+
+            <form action="process_signup.php" method="POST">
+                <div class="input-group">
+                    <input type="text" name="username" placeholder="Full Name" required>
+                </div>
+                <div class="input-group">
+                    <input type="email" name="email" placeholder="Email Address" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+
+                <button type="submit" class="submit-btn">JOIN THE FAMILY</button>
+            </form>
+
+          <p class="footer-text">Already a member? <a href="javascript:void(0)" onclick="toggleForms()">Login here</a></p>
+        </div>
+ </div>
+	
+	
+
+    <div class="glass-box hidden" id="login-box">
+        <div class="logo-container">
+            <img src="cropped_circle_image.png" alt="Logo">
+        </div>
+        <h2>WELCOME BACK</h2>
+<form action="process_signup.php" method="POST">
+            <div class="input-group"><input type="email" name="email" placeholder="Email Address" required></div>
+            <div class="input-group"><input type="password" name="password" placeholder="Password" required></div>
+            <button type="submit" class="submit-btn">LOGIN</button>
+        </form>
+<p class="footer-text">New here? <a href="javascript:void(0)" onclick="toggleForms()">Join the Family</a></p>
+        </div>
+
+
+<script>
+    function toggleForms() {
+        const signupBox = document.getElementById('signup-box');
+        const loginBox = document.getElementById('login-box');
+
+        signupBox.classList.toggle('hidden');
+        loginBox.classList.toggle('hidden');
+    }
+    </script>
+
+</body>
+
+</html>

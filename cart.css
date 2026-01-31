@@ -1,0 +1,375 @@
+
+/* --- 1. IMPROVED GLOBAL & WRAPPER --- */
+* { 
+    box-sizing: border-box; 
+    max-width: 100%; /* Prevents horizontal overflow */
+}
+
+body {
+    background-color: #fdfdfd;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+.cart-wrapper {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 5%; /* Percentage padding scales better than fixed px */
+    min-height: 65vh; 
+}
+
+.cart-flex-container {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    flex-wrap: wrap; 
+}
+
+.category-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #222;
+}
+
+/* --- 2. LEFT SIDE: ITEMS LIST --- */
+.cart-items-section {
+    flex: 1 1 600px; /* Grows to fill space, but won't shrink below 600px before wrapping */
+    width: 100%;
+}
+
+.cart-card {
+    background: white;
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    width: 100%;
+}
+
+.cart-card:hover {
+    transform: translateY(-5px);
+}
+
+.cart-card img {
+    width: clamp(80px, 15vw, 120px); /* Scales image between 80px and 120px based on screen */
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-right: 1.5rem;
+}
+
+.cart-info {
+    flex-grow: 1;
+}
+
+.cart-info h3 {
+    margin: 0 0 5px 0;
+    color: #333;
+}
+
+.cart-info .price {
+    font-weight: bold;
+    color: #f08121;
+    font-size: 1.1rem;
+}
+
+.remove-btn {
+    background: #fff0f0;
+    color: #ff4d4d;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.remove-btn:hover {
+    background: #ff4d4d;
+    color: white;
+}
+
+/* --- 3. RIGHT SIDE: ORDER SUMMARY --- */
+.order-summary-card {
+    flex: 1 1 320px; /* Allows summary to sit nicely on tablets or wrap on phones */
+    width: 100%;
+    background: white;
+    padding: 2rem;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 20px; 
+}
+
+.order-summary-card h3 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    border-bottom: 2px solid #f9f9f9;
+    padding-bottom: 15px;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+    font-weight: 500;
+    color: #555;
+}
+
+/* --- 4. COUPON BOX --- */
+.summary-coupon-box {
+    display: flex;
+    gap: 8px;
+    margin: 20px 0 5px 0;
+}
+
+#couponInput {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    outline: none;
+    background: #f9f9f9;
+}
+
+#couponInput:focus {
+    border-color: #f08121;
+    background: #fff;
+}
+
+#applyCouponBtn {
+    background: #000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#applyCouponBtn:hover {
+    background: #f08121;
+}
+
+#couponMessage {
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* --- 5. TOTALS & BUTTONS --- */
+.summary-divider {
+    border: 0;
+    border-top: 1px dashed #ddd;
+    margin: 20px 0;
+}
+
+.total-line {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #000;
+}
+
+#total-val {
+    color: #f08121;
+}
+
+.checkout-btn {
+    width: 100%;
+    background: #000;
+    color: white;
+    border: none;
+    padding: 18px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.checkout-btn:hover {
+    background: #f08121;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(240, 129, 33, 0.2);
+}
+
+/* --- 6. SWEET MODAL (POPUP) STYLES --- */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    backdrop-filter: blur(4px); 
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 380px;
+    width: 85%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    animation: popUp 0.3s ease-out;
+}
+
+.modal-icon { font-size: 50px; margin-bottom: 10px; }
+.modal-content h2 { font-size: 1.3rem; margin-bottom: 10px; }
+.modal-content p { font-size: 0.95rem; color: #666; margin-bottom: 20px; }
+
+.close-modal-btn {
+    background: #000;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@keyframes popUp {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* --- 7. SLIM FOOTER STYLES --- */
+.main-footer {
+    background-color: #111;
+    color: #fff;
+    padding: 30px 0 10px 0;
+    font-size: 0.85rem;
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Makes footer items stack on mobile */
+    padding: 0 20px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 150px;
+    margin-bottom: 20px;
+}
+
+.footer-column h3 {
+    font-size: 1rem;
+    margin-bottom: 12px;
+    color: #f08121;
+    text-transform: uppercase;
+}
+
+.footer-column p, .footer-column ul {
+    color: #bbb;
+    line-height: 1.4;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li { margin-bottom: 5px; }
+
+.footer-column ul li a {
+    color: #bbb;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+/* FIX: Orange Hover back */
+.footer-column ul li a:hover { 
+    color: #f08121; 
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+/* FIX: Social Icons Original Color (No filters) */
+.social-img {
+    width: 25px; 
+    height: 25px;
+    filter: none;
+}
+
+.social-img:hover {
+    transform: scale(1.1);
+}
+
+.copyright {
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid #222;
+    margin-top: 10px;
+    padding-top: 10px;
+    font-size: 0.75rem;
+    color: #555;
+}
+
+/* --- 4. MEDIA QUERIES FOR SEAMLESS TRANSITION --- */
+
+/* Medium Screens (Tablets) */
+@media (max-width: 992px) {
+    .cart-wrapper {
+        margin: 1rem auto;
+    }
+    .order-summary-card {
+        position: static; /* Summary flows with page on smaller heights */
+        margin-top: 1rem;
+    }
+}
+
+/* Small Screens (Large Phones) */
+@media (max-width: 768px) {
+    .category-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    .cart-card {
+        padding: 1rem;
+    }
+}
+
+/* Extra Small Screens (Small Phones) */
+@media (max-width: 480px) {
+    .cart-card {
+        flex-direction: column; 
+        text-align: center;
+    }
+    .cart-card img {
+        margin-right: 0;
+        margin-bottom: 1rem;
+        width: 100%;
+        max-width: 200px;
+    }
+    .cart-info {
+        margin-bottom: 1rem;
+    }
+    .remove-btn {
+        width: 100%;
+    }
+    .summary-coupon-box {
+        flex-direction: column;
+    }
+    #applyCouponBtn {
+        width: 100%;
+    }
+}

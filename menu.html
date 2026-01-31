@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spice & Smile</title>
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+
+   <header class="navbar-pill">
+    <div class="logo-group">
+        <img src="logo.png" class="chili-img" alt="Logo">
+    </div>
+
+    <div class="location-search">
+        <span class="loc-icon">📍</span>
+        <select id="citySelect" class="loc-select" onchange="checkOther(this.value)">
+            <option value="">Select City</option>
+            <option value="Dadar">Dadar</option>
+            <option value="Ghatkoper">Ghatkoper</option>
+            <option value="Bandra">Bandra</option>
+            <option value="Other">Other...</option>
+        </select>
+        <input type="text" id="manualCity" class="loc-input" placeholder="Type city..." style="display:none;" onkeydown="handleEnter(event)">
+        <span id="displayCity" style="display:none; color:white; font-weight:bold; cursor:pointer;" onclick="resetLocation()"></span>
+    </div>
+
+    <nav class="nav-links">
+        <a href="index.html">🏠 Home</a>
+        <a href="menu.html">📜 Menu</a>
+        <a href="aboutus.html">ℹ️ About</a>
+        <a href="signup.html">👤 Login</a>
+        <a href="cart.html" class="cart">
+            🛒 Cart (<span id="cart-count">0</span>)
+        </a>
+    </nav>
+</header>
+
+    
+   
+	
+	<main class="menu-content">
+    <h2 class="category-title">DABELI SPECIALS</h2>
+    
+    <div class="menu-row">
+        <div class="menu-card">
+            <img src="classic dabelli.png" class="food-thumb">
+            <span class="veg-icon"></span><h3>Classic Dabeli</h3>
+			<p class="desc">Grilled pav stuffed with classic Dabeli masala, tangy chutneys & crunchy peanuts.</p>
+            <p class="price">₹80</p>
+            <div class="qty-controller" style="display: none;">
+                <button class="qty-btn minus">-</button>
+                <span class="qty-number">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+
+        <div class="menu-card">
+            <img src="cheese dabelli.png" class="food-thumb">
+           <span class="veg-icon"></span> <h3>Cheese Dabeli</h3>
+			<p class="desc">Grilled pav loaded with melted cheese, spiced potato filling & flavorful chutneys.</p>
+            <p class="price">₹100</p>
+            <div class="qty-controller" style="display: none;">
+                <button class="qty-btn minus">-</button>
+                <span class="qty-number">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+
+        <div class="menu-card">
+            <img src="butter dabelli.png" class="food-thumb">
+          <span class="veg-icon"></span>  <h3>Butter Dabeli</h3>
+			<p class="desc">Buttery grilled pav filled with traditional Dabeli stuffing and house spices.</p>
+            <p class="price">₹90</p>
+            <div class="qty-controller" style="display: none;">
+                <button class="qty-btn minus">-</button>
+                <span class="qty-number">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+    </div> <div class="menu-row">
+        <div class="menu-card">
+            <img src="butter chesse dabelli.png" class="food-thumb">
+          <span class="veg-icon"></span>  <h3>Butter Chesse Dabeli</h3>
+			<p class="desc">Grilled pav layered with butter, cheese and signature Dabeli masala.</p>
+
+            <p class="price">₹70</p>
+            <div class="qty-controller" style="display: none;">
+                <button class="qty-btn minus">-</button>
+                <span class="qty-number">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+
+        <div class="menu-card">
+            <img src="Special dabelli.png" class="food-thumb">
+           <span class="veg-icon"></span> <h3>Special Dabeli</h3>
+			<p class="desc">Our special grilled Dabeli with extra filling, bold flavors & crunchy toppings.</p>
+
+            <p class="price">₹110</p>
+            <div class="qty-controller" style="display: none;">
+                <button class="qty-btn minus">-</button>
+                <span class="qty-number">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+
+        <div class="menu-card">
+            <img src="jain dabelli.png" class="food-thumb">
+        <span class="veg-icon"></span>    <h3>Jain Dabeli</h3>
+			p class="desc">Jain-style grilled Dabeli prepared without onion, full of authentic taste.</p>
+            <p class="price">₹95</p>
+            <div class="qty-controller" style="display: none;">
+                <button class="qty-btn minus">-</button>
+                <span class="qty-number">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+    </div> <h2 class="category-title">FRESH JUICES</h2>
+
+    <div class="menu-row">
+        <div class="menu-card">
+            <img src="pineapple juice (2).png" class="food-thumb">
+         <span class="veg-icon"></span>   <h3>Pineapple Juice</h3>
+			<p class="desc">Freshly extracted pineapple juice served chilled and refreshing.</p>
+            <p class="price">₹60</p>
+            <div class="qty-controller" style="display: none;">
+                <button class="qty-btn minus">-</button>
+                <span class="qty-number">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+
+        <div class="menu-card">
+            <img src="mango juice.png" class="food-thumb">
+            <span class="veg-icon"></span><h3>Mango Juice</h3>
+			<p class="desc">Sweet and refreshing mango juice made from ripe, juicy mangoes.</p>
+            <p class="price">₹80</p>
+            <div class="qty-controller" style="display: none;">
+                <button class="qty-btn minus">-</button>
+                <span class="qty-number">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+
+        <div class="menu-card">
+            <img src="mix fruit juice.png" class="food-thumb">
+          <span class="veg-icon"></span>  <h3>Mix Fruit Juice</h3>
+			<p class="desc">A refreshing blend of seasonal fruits, freshly prepared and chilled.</p>
+            <p class="price">₹90</p>
+            <div class="qty-controller" style="display: none;">
+                <button class="qty-btn minus">-</button>
+                <span class="qty-number">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+    </div> <div class="menu-row">
+        <div class="menu-card">
+            <img src="grapes juice (2).png" class="food-thumb">
+           <span class="veg-icon"></span> <h3>Grapes Juice</h3>
+			<p class="desc">Naturally sweet grapes juice served fresh and chilled.</p>
+            <p class="price">₹70</p>
+            <div class="qty-controller" style="display: none;">
+                <button class="qty-btn minus">-</button>
+                <span class="qty-number">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+
+        <div class="menu-card">
+            <img src="apple juice.png" class="food-thumb">
+           <span class="veg-icon"></span> <h3>Apple Juice</h3>
+			<p class="desc">Fresh apple juice with a perfect balance of sweetness and freshness.</p>
+            <p class="price">₹80</p>
+            <div class="qty-controller" style="display: none;">
+                <button class="qty-btn minus">-</button>
+                <span class="qty-number">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+
+        <div class="menu-card">
+            <img src="gauva juice (2).png" class="food-thumb">
+           <span class="veg-icon"></span> <h3>Gauva Juice</h3>
+			<p class="desc">Refreshing guava juice with natural flavor and pulp.</p>
+            <p class="price">₹100</p>
+            <div class="qty-controller" style="display: none;">
+                <button class="qty-btn minus">-</button>
+                <span class="qty-number">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+    </div> </main>
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>Contact Us</h3>
+            <p>123 Spice Lane, Flavor Town</p>
+            <p>Phone: +91 8104058728</p>
+           <p> <a href="mailto:tanvisawant0417@gmail.com" target="_blank" class="white-email">
+        SpiceandSmile@gmail.com
+    </a>
+	</p>
+        </div>
+
+        <div class="footer-column">
+            <h3>Available In:</h3>
+            <ul>
+                <li><a href="#">Dadar</a></li>
+                <li><a href="#">Andheri</a></li>
+                <li><a href="#">Ghatkoper</a></li>
+                <li><a href="#">Bandra</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>Legal</h3>
+            <ul>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Cookie Policy</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+    <h3>SOCIAL LINKS</h3> <div class="social-icons">
+        <a href="https://wa.me/918104058728" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="social-img">
+        </a>
+        <a href="https://www.instagram.com/_.tanvi_.0427" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram" class="social-img">
+        </a>
+    </div>
+            <p class="copyright">© 2026 Spice & Smile Limited</p>
+        </div>
+    </div>
+</footer>
+
+	 <script src="menu.js"></script>
+
+</body>
+
+</html>
